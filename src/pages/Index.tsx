@@ -14,7 +14,7 @@ const Index = () => {
       navigate('/dashboard');
     } else {
       // If not logged in, redirect to auth page
-      navigate('/');
+      navigate('/auth');
     }
   }, [navigate]);
 
