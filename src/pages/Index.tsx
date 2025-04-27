@@ -10,10 +10,8 @@ const Index = () => {
     const userRole = localStorage.getItem('userRole');
     
     if (userRole) {
-      // If logged in, redirect to dashboard
       navigate('/dashboard');
     } else {
-      // If not logged in, redirect to auth page
       navigate('/auth');
     }
   }, [navigate]);
@@ -21,8 +19,14 @@ const Index = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">SlumTech Regenera</h1>
-        <p className="text-xl text-muted-foreground">Redirecting...</p>
+        <h1 className="text-4xl font-bold mb-4">
+          SlumTech Regenera | Sustainable Innovation for All
+        </h1>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Transforming informal settlements through regenerative technology solutions.
+          Solar energy, smart sanitation, food forests, and eco-housing for resilient communities.
+        </p>
+        <p className="mt-4 text-muted-foreground">Redirecting to platform...</p>
       </div>
     </div>
   );
