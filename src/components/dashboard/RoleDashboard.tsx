@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Redirect, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { toast } from 'sonner';
 
@@ -15,13 +15,14 @@ export const RoleDashboard: React.FC<RoleDashboardProps> = ({ expectedRole, chil
   
   if (!userRole) {
     toast.error("Please sign in to access the dashboard");
-    return <Redirect to="/auth" />;
+    return <Navigate to="/auth" replace />;
   }
 
   if (userRole !== expectedRole) {
     toast.error(`You need ${expectedRole} permissions to access this page`);
-    return <Redirect to={`/${userRole}-dashboard`} />;
+    return <Navigate to={`/${userRole}-dashboard`} replace />;
   }
 
   return <AppLayout role={expectedRole}>{children}</AppLayout>;
 };
+
