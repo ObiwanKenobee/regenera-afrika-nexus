@@ -6,7 +6,6 @@ import { ProjectCard } from '@/components/dashboard/ProjectCard';
 import { ResourceUsageChart } from '@/components/dashboard/ResourceUsageChart';
 import { ActivityFeed } from '@/components/dashboard/ActivityFeed';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const ResidentDashboard = () => {
   const residentStats = [
@@ -18,10 +17,10 @@ const ResidentDashboard = () => {
 
   return (
     <RoleDashboard expectedRole="resident">
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6 p-4 md:p-6">
         <div>
-          <h1 className="text-3xl font-bold">Resident Dashboard</h1>
-          <p className="text-muted-foreground mt-1">
+          <h1 className="text-2xl md:text-3xl font-bold">Resident Dashboard</h1>
+          <p className="text-muted-foreground mt-1 text-sm md:text-base">
             Monitor your resources and stay connected with community activities
           </p>
         </div>
@@ -29,7 +28,7 @@ const ResidentDashboard = () => {
         <StatsGrid stats={residentStats} />
 
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList>
+          <TabsList className="w-full overflow-x-auto flex-wrap justify-start">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="utilities">Utilities</TabsTrigger>
             <TabsTrigger value="training">Training</TabsTrigger>
@@ -37,8 +36,8 @@ const ResidentDashboard = () => {
           </TabsList>
 
           <TabsContent value="overview">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-2">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="lg:col-span-2 space-y-4">
                 <ResourceUsageChart 
                   title="Solar Energy Usage"
                   data={[
@@ -54,19 +53,21 @@ const ResidentDashboard = () => {
                   unit="kWh"
                 />
               </div>
-              <ActivityFeed 
-                title="Recent Activity"
-                activities={[
-                  { id: '1', title: 'Solar Credits Earned', timestamp: '2 hours ago', status: 'Completed', type: 'credit' },
-                  { id: '2', title: 'Training Module 3', timestamp: '5 hours ago', status: 'In Progress', type: 'training' },
-                  { id: '3', title: 'Community Event', timestamp: '1 day ago', status: 'Upcoming', type: 'event' },
-                ]}
-              />
+              <div className="w-full">
+                <ActivityFeed 
+                  title="Recent Activity"
+                  activities={[
+                    { id: '1', title: 'Solar Credits Earned', timestamp: '2 hours ago', status: 'Completed', type: 'credit' },
+                    { id: '2', title: 'Training Module 3', timestamp: '5 hours ago', status: 'In Progress', type: 'training' },
+                    { id: '3', title: 'Community Event', timestamp: '1 day ago', status: 'Upcoming', type: 'event' },
+                  ]}
+                />
+              </div>
             </div>
           </TabsContent>
 
           <TabsContent value="utilities">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
               <ProjectCard
                 title="Solar Panel System"
                 description="Your home solar installation and energy production"

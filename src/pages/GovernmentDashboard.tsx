@@ -17,10 +17,10 @@ const GovernmentDashboard = () => {
 
   return (
     <RoleDashboard expectedRole="government">
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6 p-4 md:p-6">
         <div>
-          <h1 className="text-3xl font-bold">Government Dashboard</h1>
-          <p className="text-muted-foreground mt-1">
+          <h1 className="text-2xl md:text-3xl font-bold">Government Dashboard</h1>
+          <p className="text-muted-foreground mt-1 text-sm md:text-base">
             Monitor compliance and impact across urban development initiatives
           </p>
         </div>
@@ -28,7 +28,7 @@ const GovernmentDashboard = () => {
         <StatsGrid stats={governmentStats} />
 
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList>
+          <TabsList className="w-full overflow-x-auto flex-wrap justify-start">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="compliance">Compliance</TabsTrigger>
             <TabsTrigger value="policies">Policies</TabsTrigger>
@@ -36,8 +36,8 @@ const GovernmentDashboard = () => {
           </TabsList>
 
           <TabsContent value="overview">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-2">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="lg:col-span-2 space-y-4">
                 <ResourceUsageChart 
                   title="Compliance Metrics"
                   data={[
@@ -50,19 +50,21 @@ const GovernmentDashboard = () => {
                   unit="%"
                 />
               </div>
-              <ActivityFeed 
-                title="Compliance Events"
-                activities={[
-                  { id: '1', title: 'Policy Review', timestamp: '2 hours ago', status: 'Completed', type: 'review' },
-                  { id: '2', title: 'Inspection', timestamp: '1 day ago', status: 'Scheduled', type: 'inspection' },
-                  { id: '3', title: 'Report Filing', timestamp: '3 days ago', status: 'Pending', type: 'report' },
-                ]}
-              />
+              <div className="w-full">
+                <ActivityFeed 
+                  title="Compliance Events"
+                  activities={[
+                    { id: '1', title: 'Policy Review', timestamp: '2 hours ago', status: 'Completed', type: 'review' },
+                    { id: '2', title: 'Inspection', timestamp: '1 day ago', status: 'Scheduled', type: 'inspection' },
+                    { id: '3', title: 'Report Filing', timestamp: '3 days ago', status: 'Pending', type: 'report' },
+                  ]}
+                />
+              </div>
             </div>
           </TabsContent>
 
           <TabsContent value="initiatives">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               <ProjectCard
                 title="Urban Planning Reform"
                 description="Implementing sustainable urban planning guidelines"

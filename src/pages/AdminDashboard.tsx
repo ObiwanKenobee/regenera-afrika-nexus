@@ -17,10 +17,10 @@ const AdminDashboard = () => {
 
   return (
     <RoleDashboard expectedRole="admin">
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6 p-4 md:p-6">
         <div>
-          <h1 className="text-3xl font-bold">System Administration</h1>
-          <p className="text-muted-foreground mt-1">
+          <h1 className="text-2xl md:text-3xl font-bold">System Administration</h1>
+          <p className="text-muted-foreground mt-1 text-sm md:text-base">
             Monitor and manage platform performance and security
           </p>
         </div>
@@ -28,7 +28,7 @@ const AdminDashboard = () => {
         <StatsGrid stats={adminStats} />
 
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList>
+          <TabsList className="w-full overflow-x-auto flex-wrap justify-start">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="users">Users</TabsTrigger>
             <TabsTrigger value="system">System</TabsTrigger>
@@ -36,8 +36,8 @@ const AdminDashboard = () => {
           </TabsList>
 
           <TabsContent value="overview">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-2">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="lg:col-span-2 space-y-4">
                 <ResourceUsageChart 
                   title="System Resource Utilization"
                   data={[
@@ -53,19 +53,21 @@ const AdminDashboard = () => {
                   unit="%"
                 />
               </div>
-              <ActivityFeed 
-                title="System Events"
-                activities={[
-                  { id: '1', title: 'Database Backup', timestamp: '1 hour ago', status: 'Completed', type: 'system' },
-                  { id: '2', title: 'Security Scan', timestamp: '3 hours ago', status: 'In Progress', type: 'security' },
-                  { id: '3', title: 'API Update', timestamp: '1 day ago', status: 'Scheduled', type: 'maintenance' },
-                ]}
-              />
+              <div className="w-full">
+                <ActivityFeed 
+                  title="System Events"
+                  activities={[
+                    { id: '1', title: 'Database Backup', timestamp: '1 hour ago', status: 'Completed', type: 'system' },
+                    { id: '2', title: 'Security Scan', timestamp: '3 hours ago', status: 'In Progress', type: 'security' },
+                    { id: '3', title: 'API Update', timestamp: '1 day ago', status: 'Scheduled', type: 'maintenance' },
+                  ]}
+                />
+              </div>
             </div>
           </TabsContent>
 
           <TabsContent value="system">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               <ProjectCard
                 title="Platform Security Audit"
                 description="Comprehensive security review of all systems"
