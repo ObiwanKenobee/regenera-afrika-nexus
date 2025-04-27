@@ -7,9 +7,12 @@ import { ThemeProvider } from "@/hooks/use-theme";
 
 // Pages
 import AuthPage from "./pages/AuthPage";
-import Dashboard from "./pages/Dashboard";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import ResidentDashboard from "./pages/ResidentDashboard";
+import NgoDashboard from "./pages/NgoDashboard";
+import GovernmentDashboard from "./pages/GovernmentDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
 
 // Create QueryClient outside of the component
 const queryClient = new QueryClient();
@@ -24,7 +27,10 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<AuthPage />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/resident-dashboard" element={<ResidentDashboard />} />
+              <Route path="/ngo-dashboard" element={<NgoDashboard />} />
+              <Route path="/government-dashboard" element={<GovernmentDashboard />} />
+              <Route path="/admin-dashboard" element={<AdminDashboard />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
