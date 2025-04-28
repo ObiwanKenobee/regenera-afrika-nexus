@@ -8,7 +8,7 @@ interface ProjectCardProps {
   title: string;
   description: string;
   progress: number;
-  status: 'active' | 'pending' | 'completed' | 'planned';
+  status: 'active' | 'pending' | 'completed' | 'planned' | 'in-progress' | 'upcoming' | 'viewable';
   lastUpdated: string;
 }
 
@@ -23,7 +23,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
     active: "bg-green-100 text-green-800",
     pending: "bg-yellow-100 text-yellow-800",
     completed: "bg-blue-100 text-blue-800",
-    planned: "bg-purple-100 text-purple-800"
+    planned: "bg-purple-100 text-purple-800",
+    'in-progress': "bg-orange-100 text-orange-800",
+    upcoming: "bg-indigo-100 text-indigo-800",
+    viewable: "bg-sky-100 text-sky-800"
   };
   
   return (
