@@ -1,15 +1,15 @@
-
 import React from 'react';
 import { RoleDashboard } from '@/components/dashboard/RoleDashboard';
 import { StatsGrid } from '@/components/dashboard/StatsGrid';
-import { ProjectCard } from '@/components/dashboard/ProjectCard';
-import { ResourceUsageChart } from '@/components/dashboard/ResourceUsageChart';
-import { ActivityFeed } from '@/components/dashboard/ActivityFeed';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
+import { DashboardTabs } from '@/components/dashboard/DashboardTabs';
+import { OverviewTab } from '@/components/dashboard/tabs/OverviewTab';
+import { TabsContent } from "@/components/ui/tabs";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Wallet, Users, BookOpen, Leaf, CalendarDays } from "lucide-react";
+import { ProjectCard } from '@/components/dashboard/ProjectCard';
 
 const ResidentDashboard = () => {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
@@ -24,56 +24,16 @@ const ResidentDashboard = () => {
   return (
     <RoleDashboard expectedRole="resident">
       <div className="space-y-4 md:space-y-6 p-4 md:p-6">
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold">Resident Dashboard</h1>
-          <p className="text-muted-foreground mt-1 text-sm md:text-base">
-            Monitor your resources and stay connected with community activities
-          </p>
-        </div>
+        <DashboardHeader 
+          title="Resident Dashboard"
+          description="Monitor your resources and stay connected with community activities"
+        />
 
         <StatsGrid stats={residentStats} />
 
-        <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="w-full overflow-x-auto flex-wrap justify-start">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="utilities">Utilities</TabsTrigger>
-            <TabsTrigger value="training">Training</TabsTrigger>
-            <TabsTrigger value="community">Community</TabsTrigger>
-            <TabsTrigger value="wallet">Wallet</TabsTrigger>
-            <TabsTrigger value="calendar">Calendar</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="overview">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
-              <div className="lg:col-span-2 space-y-4">
-                <ResourceUsageChart 
-                  title="Solar Energy Usage"
-                  data={[
-                    { name: 'Mon', value: 30 },
-                    { name: 'Tue', value: 45 },
-                    { name: 'Wed', value: 35 },
-                    { name: 'Thu', value: 50 },
-                    { name: 'Fri', value: 40 },
-                    { name: 'Sat', value: 35 },
-                    { name: 'Sun', value: 30 }
-                  ]}
-                  color="#10b981"
-                  unit="kWh"
-                />
-              </div>
-              <div className="w-full">
-                <ActivityFeed 
-                  title="Recent Activity"
-                  activities={[
-                    { id: '1', title: 'Solar Credits Earned', timestamp: '2 hours ago', status: 'Completed', type: 'credit' },
-                    { id: '2', title: 'Training Module 3', timestamp: '5 hours ago', status: 'In Progress', type: 'training' },
-                    { id: '3', title: 'Community Event', timestamp: '1 day ago', status: 'Upcoming', type: 'event' },
-                  ]}
-                />
-              </div>
-            </div>
-          </TabsContent>
-
+        <DashboardTabs>
+          <OverviewTab />
+          
           <TabsContent value="utilities">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <Card>
@@ -274,7 +234,7 @@ const ResidentDashboard = () => {
               </Card>
             </div>
           </TabsContent>
-        </Tabs>
+        </DashboardTabs>
       </div>
     </RoleDashboard>
   );
