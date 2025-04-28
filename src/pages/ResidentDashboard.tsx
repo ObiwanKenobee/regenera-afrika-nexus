@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Wallet, Users, BookOpen, Leaf, CalendarDays } from "lucide-react";
 import { ProjectCard } from '@/components/dashboard/ProjectCard';
+import { ActivityFeed } from '@/components/dashboard/ActivityFeed';
 
 const ResidentDashboard = () => {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
